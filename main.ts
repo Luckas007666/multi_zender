@@ -1,5 +1,7 @@
 radio.onReceivedString(function (receivedString) {
     makerbit.showStringOnLcd1602(receivedString, makerbit.position1602(LcdPosition1602.Pos17), 16)
+    basic.pause(1000)
+    makerbit.showStringOnLcd1602("", makerbit.position1602(LcdPosition1602.Pos17), 7)
 })
 function leesIngedrukteKnop () {
     bit0 = pins.digitalReadPin(DigitalPin.P16)
