@@ -8,10 +8,10 @@ function leesIngedrukteKnop () {
     bit1 = pins.digitalReadPin(DigitalPin.P15)
     bit2 = pins.digitalReadPin(DigitalPin.P14)
     bit3 = pins.digitalReadPin(DigitalPin.P13)
-    makerbit.showStringOnLcd1602("" + (bit0), makerbit.position1602(LcdPosition1602.Pos13), 1)
-    makerbit.showStringOnLcd1602("" + (bit1), makerbit.position1602(LcdPosition1602.Pos14), 1)
-    makerbit.showStringOnLcd1602("" + (bit2), makerbit.position1602(LcdPosition1602.Pos15), 1)
-    makerbit.showStringOnLcd1602("" + (bit3), makerbit.position1602(LcdPosition1602.Pos16), 1)
+    makerbit.showStringOnLcd1602("" + (bit0), makerbit.position1602(LcdPosition1602.Pos16), 1)
+    makerbit.showStringOnLcd1602("" + (bit1), makerbit.position1602(LcdPosition1602.Pos15), 1)
+    makerbit.showStringOnLcd1602("" + (bit2), makerbit.position1602(LcdPosition1602.Pos14), 1)
+    makerbit.showStringOnLcd1602("" + (bit3), makerbit.position1602(LcdPosition1602.Pos13), 1)
     waarde = bit3 * 8 + (bit2 * 4 + (bit1 * 2 + bit0))
     return waarde
 }
@@ -28,16 +28,16 @@ makerbit.showStringOnLcd1602("Op RadioGroep 11", makerbit.position1602(LcdPositi
 basic.pause(1000)
 makerbit.clearLcd1602()
 basic.forever(function () {
-    if (pins.digitalReadPin(DigitalPin.P8) == 1) {
-        while (pins.digitalReadPin(DigitalPin.P8) != 0) {
+    if (pins.digitalReadPin(DigitalPin.P8) == 0) {
+        while (pins.digitalReadPin(DigitalPin.P8) == 0) {
             basic.pause(100)
         }
-        basic.pause(500)
+        basic.pause(200)
         waarde = leesIngedrukteKnop()
-        makerbit.showStringOnLcd1602("" + (bit0), makerbit.position1602(LcdPosition1602.Pos13), 1)
-        makerbit.showStringOnLcd1602("" + (bit1), makerbit.position1602(LcdPosition1602.Pos14), 1)
-        makerbit.showStringOnLcd1602("" + (bit2), makerbit.position1602(LcdPosition1602.Pos15), 1)
-        makerbit.showStringOnLcd1602("" + (bit3), makerbit.position1602(LcdPosition1602.Pos16), 1)
+        makerbit.showStringOnLcd1602("" + (bit0), makerbit.position1602(LcdPosition1602.Pos16), 1)
+        makerbit.showStringOnLcd1602("" + (bit1), makerbit.position1602(LcdPosition1602.Pos15), 1)
+        makerbit.showStringOnLcd1602("" + (bit2), makerbit.position1602(LcdPosition1602.Pos14), 1)
+        makerbit.showStringOnLcd1602("" + (bit3), makerbit.position1602(LcdPosition1602.Pos13), 1)
         if (waarde == 0) {
             makerbit.showStringOnLcd1602("knop 0", makerbit.position1602(LcdPosition1602.Pos1), 7)
             radio.sendValue("knop", 0)
