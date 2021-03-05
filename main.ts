@@ -30,7 +30,7 @@ basic.forever(function () {
         while (pins.digitalReadPin(DigitalPin.P8) != 0) {
             basic.pause(100)
         }
-        basic.pause(200)
+        basic.pause(500)
         waarde = leesIngedrukteKnop()
         makerbit.showStringOnLcd1602("" + (bit0), makerbit.position1602(LcdPosition1602.Pos13), 1)
         makerbit.showStringOnLcd1602("" + (bit1), makerbit.position1602(LcdPosition1602.Pos14), 1)
